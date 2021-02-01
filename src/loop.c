@@ -285,6 +285,7 @@ void do_disconnect(struct mosquitto *context, int reason)
 #endif
 
 	if(context->state == mosq_cs_disconnected){
+		context__cleanup(context, true);
 		return;
 	}
 #ifdef WITH_WEBSOCKETS
